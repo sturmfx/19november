@@ -101,10 +101,9 @@ public class GameScreen extends JFrame implements KeyListener
                     if(!up&&down&&!right&&!left) y++;
                     if(!up&&!down&&right&&!left) x++;
                     if(!up&&!down&&!right&&left) x--;
-                    repaint();
                 }
-
-        }
+                repaint();
+         }
     }
 
     public void paint(Graphics g)
@@ -112,12 +111,5 @@ public class GameScreen extends JFrame implements KeyListener
         g.clearRect(0, 0, 500, 500);
 
         g.fillOval(x, y, width, height);
-    }
-
-
-    public static void main(String[] args)
-    {
-        new GameScreen("GAME 1");
-
     }
 }
