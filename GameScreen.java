@@ -14,7 +14,7 @@ public class GameScreen extends JFrame implements KeyListener
     public static boolean right = false;
     public static boolean left = false;
 
-    public static int speed = 10;
+    public static int speed = 1;
     public static Color color = Color.RED;
     public static int tick = 10;
 
@@ -36,6 +36,7 @@ public class GameScreen extends JFrame implements KeyListener
         addKeyListener(this);
         setSize(500, 500);
         setVisible(true);
+        loop();
 
     }
 
@@ -89,31 +90,34 @@ public class GameScreen extends JFrame implements KeyListener
         }
     }
 
-    public static void loop()
+    public void loop()
     {
         while(true)
         {
-            if(((!up)&&down&&right&&left)||(up&&(!down)&&right&&left)||(up&&down&&(!right)&&left)||(up&&down&&right&&(!left)))
-            {
                 if(System.currentTimeMillis() - temp_time > tick)
                 {
                     temp_time = System.currentTimeMillis();
-                    if(up);
+                    if(up&&!down&&!right&&!left) y--;
+                    if(!up&&down&&!right&&!left) y++;
+                    if(!up&&!down&&right&&!left) x++;
+                    if(!up&&!down&&!right&&left) x--;
+                    repaint();
                 }
-            }
+
         }
     }
 
     public void paint(Graphics g)
     {
         g.clearRect(0, 0, 500, 500);
-        g.fillOval((int)x1, (int)y1, width, height);
+
+        g.fillOval(x, y, width, height);
     }
 
 
     public static void main(String[] args)
     {
         new GameScreen("GAME 1");
-        System.out.println(System.currentTimeMillis());
+
     }
 }
