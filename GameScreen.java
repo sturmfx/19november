@@ -16,7 +16,7 @@ public class GameScreen extends JFrame implements KeyListener
 
     public static int speed = 1;
     public static Color color = Color.RED;
-    public static int tick = 10;
+    public static int tick = 5;
 
     public static int x = 250;
     public static int y = 250;
